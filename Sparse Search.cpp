@@ -18,6 +18,9 @@ int sparse_search(vector<string> arr,string st){
                 mid=mid-i;
             }
             i++;
+            if(i>end || i<beg){
+                return -1;
+            }
         }
         if(arr[mid]==st){
             return mid+1;
@@ -27,10 +30,11 @@ int sparse_search(vector<string> arr,string st){
             end=mid-1;
         }
     }
+    return -1;
 }
 int main(){
     vector<string> arr={"","bat","","","","cat","cow","","dog"};
-    string search_term="bat";
+    string search_term="cat";
     cout<<sparse_search(arr,search_term);
     return 0;
 }
