@@ -20,26 +20,27 @@ bool canPlace(vector<vector<int>> board, int row,int col){
     return true;
 }
 bool solve_n_queens(int N,int i,vector<vector<int>> board){
+    //Base Case
+    if(i==N){
+        cout<<"Solution: "<<endl;
+        for(auto v:board){
+            for(auto val:v){
+                cout<<val<<" ";
+            }
+            cout<<endl;
+        }
+        return true;
+    }
+    //Recursive Case
     for(int j=0;j<N;j++){
         bool cp=canPlace(board,i,j);
         if(cp){
             board[i][j]=1;
-            if(i==N-1){
-                cout<<"Solution: "<<endl;
-                for(auto v:board){
-                    for(auto val:v){
-                        cout<<val<<" ";
-                    }
-                    cout<<endl;
-                }
+            bool possible=solve_n_queens(N,i+1,board);
+            if(possible){
                 return true;
             }else{
-                bool possible=solve_n_queens(N,i+1,board);
-                if(possible){
-                    return true;
-                }else{
-                    board[i][j]=0;
-                }
+                board[i][j]=0;
             }
         }
     }
