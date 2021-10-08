@@ -20,16 +20,11 @@ bool canPlace(vector<vector<int>> mat, int val, int row,int col){
     }
     //Check Subgrid
     //9 Total Subgrids
-    int i_beg=row/3;
-    int j_beg=col/3;
-    i_beg*=3;
-    j_beg*=3;
-
-    int i_end=i_beg+3;
-    int j_end=j_beg+3;
-    for(;i_beg<i_end;i_beg++){
-        for(;j_beg<j_end;j_beg++){
-            if(mat[i_beg][j_beg]==val){
+    row=(row/3)*3;
+    col=(col/3)*3;
+    for(int i=row;i<row+3;i++){
+        for(int j=col;j<col+3;j++){
+            if(mat[i][j]==val){
                 return false;
             }
         }
