@@ -73,8 +73,8 @@ node * kReverseLL(node * head, int k){
         curr=next;
         count++;
     }
-    if(temp!=NULL){
-        head->next=kReverseLL(temp,k);
+    if(next!=NULL){
+        head->next=kReverseLL(next,k);
     }
     return prev;
 }
